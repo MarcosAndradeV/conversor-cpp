@@ -4,13 +4,8 @@
 #include <stack>
 #include <string>
 
-// #define DEBUG
-#ifdef DEBUG
-    #define dbg(item) \
-        (std::cout << __FILE__ << ":" << __LINE__ << " " << #item " = " << item << std::endl, item)
-#else
-    #define dbg(item) item
-#endif
+#define dbg(item) \
+    (std::cout << __FILE__ << ":" << __LINE__ << " " << #item " = " << item << std::endl, item)
 
 #define shift(xs_len, xs) (assert(xs_len > 0), xs_len--, *xs++)
 
@@ -42,6 +37,11 @@ int main(int argc, char **argv) {
         }
     }
     Arquivo.close();
+
+    if(bits.size() % 8 != 0) {
+        cout << "ERROR: O tamanho do arquivo precisa ser divisivel por 8." << "\n";
+        return -1;
+    }
 
     string msg = "";
     for(size_t i = 0; i < bits.size(); i+=8) {
