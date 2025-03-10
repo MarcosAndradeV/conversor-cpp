@@ -55,6 +55,6 @@ int main(int argc, char **argv) {
         msg.push_back(letter);
     }
 
-    cout << "messagem: " << msg << endl;
+    cout << "mensagem: " << msg << endl;
     return 0;
     }
