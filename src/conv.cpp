@@ -4,9 +4,6 @@
 #include <stack>
 #include <string>
 
-#define dbg(item) \
-    (std::cout << __FILE__ << ":" << __LINE__ << " " << #item " = " << item << std::endl, item)
-
 #define shift(xs_len, xs) (assert(xs_len > 0), xs_len--, *xs++)
 
 using namespace std;
@@ -45,12 +42,12 @@ int main(int argc, char **argv) {
 
     string msg = "";
     for(size_t i = 0; i < bits.size(); i+=8) {
-        stack<unsigned char> buffer;
+        stack<char> buffer;
         for(size_t j = 0; j < 8; j++) {
             buffer.push(bits[i + j]);
         }
-        unsigned char letter = 0;
-        for(unsigned char n = 1; !buffer.empty(); n++) {
+        char letter = 0;
+        for(char n = 1; !buffer.empty(); n++) {
             if(buffer.top() == '1')
                 letter = (letter | (1 << (n - 1)));
             buffer.pop();
